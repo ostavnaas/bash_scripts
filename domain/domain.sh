@@ -4,7 +4,7 @@ echo "Enter domain name:"
 read DOMAIN
 DOMAINUPPER=${DOMAIN^^}
 WORKGROUP=$(echo $DOMAINUPPER | sed 's/.LOCAL//')
-IP=$(ip a| grep "inet 192" |  awk '{print $2 }'  | sed 's/\/24//')
+IP=$(ip a list dev eth0| grep "inet\s" |  awk '{print $2 }'  | sed 's/\/24//')
 HOSTNAME=$(hostname)
 echo "Enter domain controller IP:"
 read DOMAINIP
